@@ -1,25 +1,47 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Home from '../views/Home.vue';
+/*
+ * @Description: 
+ * @Author: LLiuHuan
+ * @Date: 2021-02-17 19:13:28
+ * @LastEditTime: 2021-02-17 21:31:33
+ * @LastEditors: LLiuHuan
+ */
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import Layout from '@/layout/Index.vue'
 
-const routes: RouteRecordRaw[] = [
+const files = require.context('./modules', true, /\.ts$/)
+let modules: Array<RouteRecordRaw> = []
+files.keys().forEach((key) => {
+  if (key === './index.ts') return
+  modules = modules.concat(files(key).default)
+})
+
+export const constantRoutes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/Index.vue'),
+        name: 'Dashboard',
+        meta: {
+          title: 'dashboard',
+          icon: 'dashboard',
+          affix: true
+        }
+      }
+    ]
   },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
-];
+  ...modules
+]
 
+export const asyncRoutes: Array<RouteRecordRaw> = [
+
+]
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
-});
+  history: createWebHashHistory(),
+  routes: constantRoutes
+})
 
-export default router;
+export default router
