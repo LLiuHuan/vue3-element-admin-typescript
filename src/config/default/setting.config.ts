@@ -2,7 +2,7 @@
  * @Description: 设置属性类
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:19:16
- * @LastEditTime: 2021-02-17 21:16:02
+ * @LastEditTime: 2021-02-18 14:20:12
  * @LastEditors: LLiuHuan
  */
 
@@ -10,6 +10,9 @@
 import { Language, Environment, RouterSource, RouterMode, TokenStorageName } from '@/constant/settings'
 
 export interface Settings{
+  //项目中页面显示的名称
+  title?:string
+  //基础url
   baseURL?: string
   // pro版本copyright可随意修改
   copyright?: string
@@ -56,6 +59,9 @@ export interface Settings{
 }
 
 const settings: Settings = {
+  //项目中页面显示的名称
+  title:'Vue3后台',
+  //基础url
   baseURL: process.env.VUE_APP_BASE_API,
   // pro版本copyright可随意修改
   copyright: 'zy',

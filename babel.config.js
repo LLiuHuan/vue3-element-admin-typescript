@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:13:28
- * @LastEditTime: 2021-02-17 21:26:17
+ * @LastEditTime: 2021-02-18 16:58:29
  * @LastEditors: LLiuHuan
  */
 module.exports = {
@@ -16,13 +16,13 @@ module.exports = {
       // https://panjiachen.github.io/vue-element-admin-site/guide/advanced/lazy-loading.html
       plugins: [
         'dynamic-import-node', 
-        [
-          'component',
-          {
-            libraryName: 'element-plus',
-            styleLibraryName: 'theme-chalk'
-          }
-        ]
+        // [
+        //   'component',
+        //   {
+        //     libraryName: 'element-plus',
+        //     styleLibraryName: 'theme-chalk'
+        //   }
+        // ]
       ]
     }
   }

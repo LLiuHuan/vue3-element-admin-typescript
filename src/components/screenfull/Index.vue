@@ -2,7 +2,7 @@
  * @Description: 全屏按钮
  * @Author: LLiuHuan
  * @Date: 2021-02-17 20:52:06
- * @LastEditTime: 2021-02-17 21:13:54
+ * @LastEditTime: 2021-02-19 13:18:37
  * @LastEditors: LLiuHuan
 -->
 
@@ -63,7 +63,6 @@ export default defineComponent({
       }
     }
     onMounted(() => {
-      console.log('onMounted')
       if (sf.isEnabled) {
         sf.on('change', change)
       }

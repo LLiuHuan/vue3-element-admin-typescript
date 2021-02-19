@@ -1,18 +1,17 @@
 /*
- * @Description: 
+ * @Description: 国际化配置
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:33:20
- * @LastEditTime: 2021-02-17 20:34:15
+ * @LastEditTime: 2021-02-18 17:56:28
  * @LastEditors: LLiuHuan
  */
 
-import { createI18n } from 'vue-i18n'
+import { createI18n } from 'vue-i18n' // import from runtime only
 
 import { getLanguage } from '@/utils/cookies'
 
-// antdv built-in lang
-import antdEnLocale from 'element-plus/lib/locale/lang/en'
-import antdZhLocale from 'element-plus/lib/locale/lang/zh-cn'
+import elementEnLocale from 'element-plus/lib/locale/lang/en'
+import elementZhLocale from 'element-plus/lib/locale/lang/zh-cn'
 
 // User defined lang
 import enLocale from './en'
@@ -21,11 +20,11 @@ import zhLocale from './zh-cn'
 const messages = {
   en: {
     ...enLocale,
-    ...antdEnLocale
+    ...elementEnLocale
   },
-  zh: {
+  'zh-cn': {
     ...zhLocale,
-    ...antdZhLocale
+    ...elementZhLocale
   }
 }
 
@@ -34,7 +33,6 @@ export const getLocale = () => {
   if (cookieLanguage) {
     return cookieLanguage
   }
-
   const language = navigator.language.toLowerCase()
   const locales = Object.keys(messages)
   for (const locale of locales) {
@@ -48,8 +46,8 @@ export const getLocale = () => {
 }
 
 const i18n = createI18n({
-  locale: getLocale()
-  // messages: messages
+  locale: getLocale(),
+  messages: messages
 })
 
 export default i18n

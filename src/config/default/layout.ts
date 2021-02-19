@@ -2,11 +2,10 @@
  * @Description: 布局配置
  * @Author: LLiuHuan
  * @Date: 2021-02-17 21:14:31
- * @LastEditTime: 2021-02-17 21:14:45
+ * @LastEditTime: 2021-02-18 10:50:32
  * @LastEditors: LLiuHuan
  */
 
- 
 interface LayoutSettings {
   // Controls settings panel display
   showSettings: boolean 
@@ -22,11 +21,11 @@ interface LayoutSettings {
 
 // You can customize below settings :)
 const layoutSettings: LayoutSettings = {
-  showSettings: true,
-  showTagsView: true,
-  fixedHeader: false,
-  showSidebarLogo: false,
-  sidebarTextTheme: true,
+  showSettings: true,  // 设置显示
+  showTagsView: true,  // 显示 Tags-View
+  fixedHeader: true,  // 固定 Header
+  showSidebarLogo: true,  // 显示侧边栏 Logo
+  sidebarTextTheme: true,  // 侧边栏文字主题色
 }
 
 export default layoutSettings

@@ -2,7 +2,7 @@
  * @Description: app Mutations
  * @Author: LLiuHuan
  * @Date: 2021-02-17 21:00:32
- * @LastEditTime: 2021-02-17 21:32:55
+ * @LastEditTime: 2021-02-19 13:18:55
  * @LastEditors: LLiuHuan
  */
 
@@ -18,6 +18,8 @@ export type Mutations<S = PermissionState> = {
 
 export const mutations: MutationTree<PermissionState> & Mutations = {
   [PermissionMutationType.SET_ROUTES](state: PermissionState, routes: RouteRecordRaw[]) {
+    console.log('PermissionMutationType.SET_ROUTES')
+    console.log(routes)
     state.routes = constantRoutes.concat(routes)
     state.dynamicRoutes = routes
   }

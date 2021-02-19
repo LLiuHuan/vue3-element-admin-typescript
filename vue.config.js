@@ -2,7 +2,7 @@
  * @Description: 配置文件
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:14:33
- * @LastEditTime: 2021-02-17 20:31:58
+ * @LastEditTime: 2021-02-18 17:16:36
  * @LastEditors: LLiuHuan
  */
 
@@ -43,7 +43,8 @@ module.exports = {
       preProcessor: 'scss',
       patterns: [
         path.resolve(__dirname, 'src/styles/_variables.scss'),
-        path.resolve(__dirname, 'src/styles/_mixins.scss')
+        path.resolve(__dirname, 'src/styles/_mixins.scss'),
+        path.resolve(__dirname, 'src/styles/element-variables.scss')
       ]
     },
     i18n: {

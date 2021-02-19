@@ -2,36 +2,44 @@
  * @Description: 
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:13:28
- * @LastEditTime: 2021-02-17 21:33:58
+ * @LastEditTime: 2021-02-18 17:07:17
  * @LastEditors: LLiuHuan
  */
 
 import { createStore, createLogger } from 'vuex'
-import createPersistedState from 'vuex-persistedstate'
+// import createPersistedState from 'vuex-persistedstate'
 import { store as app, AppStore, AppState } from '@/store/modules/app'
 import { store as settings, SettingStore, SettingsState } from '@/store/modules/settings'
 import { store as permission, PermissionStore, PermissionState } from '@/store/modules/permission'
+import { store as user, UserStore, UserState } from '@/store/modules/user'
+import { store as tagViews, TagsStore, TagsViewState } from '@/store/modules/tagsview'
 
 export interface RootState {
     app: AppState
     settings: SettingsState
     permission: PermissionState
+    user: UserState
+    tagViews: TagsViewState
 }
 
-export type Store = AppStore<Pick<RootState, 'app'>> & SettingStore<Pick<RootState, 'settings'>> & PermissionStore<Pick<RootState, 'permission'>>
+export type Store = AppStore<Pick<RootState, 'app'>> & SettingStore<Pick<RootState, 'settings'>>
+& PermissionStore<Pick<RootState, 'permission'>> & UserStore<Pick<RootState, 'user'>>
+& TagsStore<Pick<RootState, 'tagViews'>>
 
 // Plug in logger when in development environment
 const debug = process.env.NODE_ENV !== 'production'
 const plugins = debug ? [createLogger({})] : []
 // Plug in session storage based persistence
-plugins.push(createPersistedState({ storage: window.sessionStorage }))
+// plugins.push(createPersistedState({ storage: window.sessionStorage }))
 
 export const store = createStore({
   plugins,
   modules: {
     app,
     settings,
-    permission
+    permission,
+    user,
+    tagViews
   }
 })
 
