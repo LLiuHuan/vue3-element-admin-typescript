@@ -1,8 +1,8 @@
 <!--
- * @Description: 
+ * @Description: 导航栏连接，目前取消了 使用的el-menu的router
  * @Author: LLiuHuan
  * @Date: 2021-02-17 21:29:00
- * @LastEditTime: 2021-02-17 21:40:06
+ * @LastEditTime: 2021-02-19 19:05:06
  * @LastEditors: LLiuHuan
 -->
 

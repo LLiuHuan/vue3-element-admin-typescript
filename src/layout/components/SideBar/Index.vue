@@ -2,7 +2,7 @@
  * @Description: 左侧导航栏
  * @Author: LLiuHuan
  * @Date: 2021-02-17 21:17:31
- * @LastEditTime: 2021-02-19 17:07:23
+ * @LastEditTime: 2021-02-22 20:24:26
  * @LastEditors: LLiuHuan
 -->
 
@@ -82,7 +82,7 @@ export default defineComponent({
     const isCollapse = computed(() => {
       return sidebar.value.opened
     })
-
+    console.log("左侧路由", routes)
     return {
       sidebar,
       routes,
@@ -132,6 +132,7 @@ export default defineComponent({
   .el-scrollbar {
     height: calc(100% - 50px);
   }
+  color: rgb(191, 203, 217);
 }
 
 .el-menu {

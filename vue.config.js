@@ -2,7 +2,7 @@
  * @Description: 配置文件
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:14:33
- * @LastEditTime: 2021-02-18 17:16:36
+ * @LastEditTime: 2021-02-22 19:29:18
  * @LastEditors: LLiuHuan
  */
 
@@ -30,6 +30,7 @@ module.exports = {
   transpileDependencies,
   devServer: {
     hot: true,
+    host: '0.0.0.0',
     port: devPort,
     open: true,
     noInfo: false,
@@ -37,6 +38,13 @@ module.exports = {
       warnings: true,
       errors: true,
     },
+    proxy: {
+      '/v1': {
+        target: 'http://localhost:8081',
+        changeOrigin: true,
+        pathRewrite: {'^/v1': ''}
+      }
+    }
   },
   pluginOptions: {
     'style-resources-loader': {

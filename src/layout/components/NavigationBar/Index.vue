@@ -2,7 +2,7 @@
  * @Description: 导航栏
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:37:40
- * @LastEditTime: 2021-02-19 13:37:11
+ * @LastEditTime: 2021-02-22 20:07:21
  * @LastEditors: LLiuHuan
 -->
 
@@ -105,6 +105,8 @@ export default {
   },
   setup() {
     const store = useStore()
+    const router = useRouter()
+    const route = useRoute()
     const { t } = useI18n()
     const sidebar = computed(() => {
       return store.state.app.sidebar
@@ -120,8 +122,8 @@ export default {
         store.dispatch(AppActionTypes.ACTION_TOGGLE_SIDEBAR, false)
       },
       logout: () => {
-        useStore().dispatch(UserActionTypes.ACTION_LOGIN_OUT)
-        useRouter().push(`/login?redirect=${useRoute().fullPath}`).catch(err => {
+        store.dispatch(UserActionTypes.ACTION_LOGIN_OUT)
+        router.push(`/login?redirect=${route.fullPath}`).catch(err => {
           console.warn(err)
         })
       }

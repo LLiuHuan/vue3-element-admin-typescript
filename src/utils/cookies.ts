@@ -1,8 +1,8 @@
 /*
- * @Description: 
+ * @Description: 设置Cookie
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:41:43
- * @LastEditTime: 2021-02-17 19:41:43
+ * @LastEditTime: 2021-02-22 19:41:31
  * @LastEditors: LLiuHuan
  */
 
@@ -18,6 +18,10 @@ export const setLanguage = (language: string) => Cookies.set(Keys.languageKey, l
 export const getSize = () => Cookies.get(Keys.sizeKey)
 export const setSize = (size: string) => Cookies.set(Keys.sizeKey, size)
 
-export const getToken = () => Cookies.get(Keys.tokenKey)
-export const setToken = (token: string) => Cookies.set(Keys.tokenKey, token)
-export const removeToken = () => Cookies.remove(Keys.tokenKey)
+export const getAToken = () => Cookies.get(Keys.atokenKey)
+export const setAToken = (token: string) => Cookies.set(Keys.atokenKey, token)
+export const removeAToken = () => Cookies.remove(Keys.atokenKey)
+
+export const getRToken = () => Cookies.get(Keys.rtokenKey)
+export const setRToken = (token: string) => Cookies.set(Keys.rtokenKey, token)
+export const removeRToken = () => Cookies.remove(Keys.rtokenKey)

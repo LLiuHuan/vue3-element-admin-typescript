@@ -2,7 +2,7 @@
  * @Description: 登录页面
  * @Author: LLiuHuan
  * @Date: 2021-02-18 14:01:23
- * @LastEditTime: 2021-02-19 13:27:29
+ * @LastEditTime: 2021-02-22 20:13:35
  * @LastEditors: LLiuHuan
 -->
 
@@ -119,7 +119,7 @@
       <br>
       <br>
       <br>
-      <SocialSign />
+      <!-- <SocialSign /> -->
     </el-dialog>
   </div>
 </template>
@@ -135,7 +135,7 @@ import {
   toRefs
 } from 'vue'
 import LangSelect from '@/components/LangSelect/Index.vue'
-import SocialSign from './Components/SocialSignin.vue'
+// import SocialSign from './Components/SocialSignin.vue'
 import { isValidUsername } from '@/utils/validate'
 import { useRoute, LocationQuery, useRouter } from 'vue-router'
 import { useStore } from '@/store'
@@ -144,7 +144,7 @@ import { useI18n } from 'vue-i18n'
 export default defineComponent({
   components: {
     LangSelect,
-    SocialSign
+    // SocialSign
   },
   setup() {
     const userNameRef = ref(null)
@@ -193,7 +193,7 @@ export default defineComponent({
     const state = reactive({
       loginForm: {
         username: 'admin',
-        password: '111111'
+        password: 'admin'
       },
       loginRules: {
         username: [{ validator: userNameRef, trigger: 'blur' }],
@@ -238,11 +238,12 @@ export default defineComponent({
         })
       },
       handleLogin: () => {
+        // 登录
         (loginFormRef.value as any).validate(async(valid: boolean) => {
           if (valid) {
             state.loading = true
             await store.dispatch(UserActionTypes.ACTION_LOGIN, state.loginForm)
-            console.log(store.state.user.token)
+            console.log(store.state.user.atoken)
             router
               .push({
                 path: state.redirect || '/',

@@ -2,7 +2,7 @@
  * @Description: app 布局入口
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:34:38
- * @LastEditTime: 2021-02-19 16:00:09
+ * @LastEditTime: 2021-02-19 18:26:19
  * @LastEditors: LLiuHuan
 -->
 
@@ -156,15 +156,15 @@ export default defineComponent({
 
 .hideSidebar {
   .main-container {
-    margin-left: 54px;
+    margin-left: 60px;
   }
 
   .sidebar-container {
-    width: 54px !important;
+    width: 60px !important;
   }
 
   .fixed-header {
-    width: calc(100% - 54px)
+    width: calc(100% - 60px)
   }
 }
 

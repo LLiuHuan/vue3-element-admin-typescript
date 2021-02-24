@@ -2,7 +2,7 @@
  * @Description: 国际化配置
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:33:20
- * @LastEditTime: 2021-02-18 17:56:28
+ * @LastEditTime: 2021-02-19 18:15:43
  * @LastEditors: LLiuHuan
  */
 
@@ -12,19 +12,31 @@ import { getLanguage } from '@/utils/cookies'
 
 import elementEnLocale from 'element-plus/lib/locale/lang/en'
 import elementZhLocale from 'element-plus/lib/locale/lang/zh-cn'
+import elementEsLocale from 'element-plus/lib/locale/lang/es'
+import elementJaLocale from 'element-plus/lib/locale/lang/ja'
 
 // User defined lang
 import enLocale from './en'
 import zhLocale from './zh-cn'
+import esLocale from './es'
+import jaLocale from './ja'
 
 const messages = {
   en: {
     ...enLocale,
     ...elementEnLocale
   },
-  'zh-cn': {
+  zh: {
     ...zhLocale,
     ...elementZhLocale
+  },
+  es: {
+    ...esLocale,
+    ...elementEsLocale
+  },
+  ja: {
+    ...jaLocale,
+    ...elementJaLocale
   }
 }
 

@@ -2,7 +2,7 @@
  * @Description: 权限
  * @Author: LLiuHuan
  * @Date: 2021-02-18 13:40:05
- * @LastEditTime: 2021-02-18 22:19:48
+ * @LastEditTime: 2021-02-22 21:11:55
  * @LastEditors: LLiuHuan
  */
 
@@ -34,11 +34,12 @@ router.beforeEach(async(to: RouteLocationNormalized, _: RouteLocationNormalized,
   // Start progress bar
   NProgress.start()
   const store = useStore()
-
+  console.log("进入：", to.path)
   // Determine whether the user has logged in
-  if (store.state.user.token) {
+  if (store.state.user.atoken) {
     if (to.path === '/login') {
       // If is logged in, redirect to the home page
+      console.log("登录跳转首页")
       next({ path: '/' })
       NProgress.done()
     } else {
@@ -63,8 +64,12 @@ router.beforeEach(async(to: RouteLocationNormalized, _: RouteLocationNormalized,
           })
           // Hack: ensure addRoutes is complete
           // Set the replace: true, so the navigation will not leave a history record
+          console.log("roles....")
+          console.log(store.state.user.roles)
+          console.log("准备跳转至原来路径", to.path)
           next({ ...to, replace: true })
         } catch (err) {
+          console.log("跳转路由报错", err)
           // Remove token and redirect to login page
           store.dispatch(UserActionTypes.ACTION_RESET_TOKEN, undefined)
           ElMessage.error(err || 'Has Error')
@@ -74,6 +79,7 @@ router.beforeEach(async(to: RouteLocationNormalized, _: RouteLocationNormalized,
       } else {
         next()
       }
+      next()
     }
   } else {
     // Has no token

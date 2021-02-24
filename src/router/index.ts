@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:13:28
- * @LastEditTime: 2021-02-19 13:24:43
+ * @LastEditTime: 2021-02-19 22:33:21
  * @LastEditors: LLiuHuan
  */
 
@@ -20,8 +20,6 @@ const asyncFiles = require.context('./permissionModules', true, /\.ts$/)
 let permissionModules: Array<RouteRecordRaw> = []
 asyncFiles.keys().forEach((key) => {
   if (key === './index.ts') return
-  console.log(key)
-  console.log(asyncFiles(key).default)
   permissionModules = permissionModules.concat(asyncFiles(key).default)
 })
 
@@ -53,6 +51,16 @@ export const constantRoutes: Array<RouteRecordRaw> = [
         }
       }
     ]
+  },
+  {
+    path: '/404',
+    component: () => import(/* webpackChunkName: "dashboard" */ '@/views/ErrorPage/404.vue'),
+    meta: { hidden: true }
+  },
+  {
+    path: '/401',
+    component: () => import(/* webpackChunkName: "dashboard" */ '@/views/ErrorPage/401.vue'),
+    meta: { hidden: true }
   },
   ...constantModules
 ]

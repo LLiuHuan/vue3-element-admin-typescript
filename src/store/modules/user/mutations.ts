@@ -2,7 +2,7 @@
  * @Description: app Mutations
  * @Author: LLiuHuan
  * @Date: 2021-02-17 21:00:32
- * @LastEditTime: 2021-02-18 13:30:39
+ * @LastEditTime: 2021-02-22 19:41:45
  * @LastEditors: LLiuHuan
  */
 
@@ -11,7 +11,8 @@ import { UserState } from './state'
 import { UserMutationTypes } from './mutation-types'
 
 export type Mutations<S = UserState> = {
-  [UserMutationTypes.SET_TOKEN](state: S, token: string): void
+  [UserMutationTypes.SET_ATOKEN](state: S, token: string): void
+  [UserMutationTypes.SET_RTOKEN](state: S, token: string): void
   [UserMutationTypes.SET_NAME](state: S, name: string): void
   [UserMutationTypes.SET_AVATAR](state: S, avatar: string): void
   [UserMutationTypes.SET_INTRODUCTION](state: S, introduction: string): void
@@ -20,8 +21,12 @@ export type Mutations<S = UserState> = {
 }
 
 export const mutations: MutationTree<UserState> & Mutations = {
-  [UserMutationTypes.SET_TOKEN](state: UserState, token: string) {
-    state.token = token
+  [UserMutationTypes.SET_ATOKEN](state: UserState, token: string) {
+    state.atoken = token
+  },
+
+  [UserMutationTypes.SET_RTOKEN](state: UserState, token: string) {
+    state.rtoken = token
   },
 
   [UserMutationTypes.SET_NAME](state: UserState, name: string) {

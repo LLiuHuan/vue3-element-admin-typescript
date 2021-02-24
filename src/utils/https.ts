@@ -2,7 +2,7 @@
  * @Description: axios 封装网络请求
  * @Author: LLiuHuan
  * @Date: 2021-02-18 13:34:07
- * @LastEditTime: 2021-02-18 21:06:22
+ * @LastEditTime: 2021-02-22 19:40:36
  * @LastEditors: LLiuHuan
  */
 
@@ -11,9 +11,9 @@ import HttpClient, { HttpClientConfig } from 'axios-mapper'
 
 const https = (hasToken: Boolean = true) => {
   const config: HttpClientConfig = {
-    baseURL: 'https://admin-tmpl-mock-test.rencaiyoujia.cn',
+    baseURL: '',
     headers: {
-      token: hasToken ? useStore().state.user.token : ''
+      token: hasToken ? useStore().state.user.atoken : ''
     }
   }
   return new HttpClient(config)

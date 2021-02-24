@@ -18,9 +18,6 @@ export type Mutations<S = SettingsState> = {
 export const mutations: MutationTree<SettingsState> & Mutations = {
   [SettingsMutationTypes.CHANGE_SETTING](state: SettingsState, payload: { key: string, value: any }) {
     const { key, value } = payload
-    // if (Object.prototype.hasOwnProperty.call(this, key)) {
-    //   (this as any)[key] = value
-    // }
     switch (key) {
       case 'theme':
         state.theme = value

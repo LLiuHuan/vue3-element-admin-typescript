@@ -2,7 +2,7 @@
  * @Description: 侧边栏 Item
  * @Author: LLiuHuan
  * @Date: 2021-02-17 21:28:53
- * @LastEditTime: 2021-02-19 14:34:11
+ * @LastEditTime: 2021-02-19 18:27:48
  * @LastEditors: LLiuHuan
 -->
 
@@ -211,7 +211,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 svg {
-  margin-right: 16px;
+  margin-right: 20px;
 }
 
 // .simple-mode {

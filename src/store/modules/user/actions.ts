@@ -2,7 +2,7 @@
  * @Description: app actions
  * @Author: LLiuHuan
  * @Date: 2021-02-17 20:59:16
- * @LastEditTime: 2021-02-18 22:10:07
+ * @LastEditTime: 2021-02-22 21:13:25
  * @LastEditors: LLiuHuan
  */
 
@@ -13,7 +13,7 @@ import { Mutations } from './mutations'
 import { UserMutationTypes } from './mutation-types'
 import { UserActionTypes } from './action-types'
 import { loginRequest, userInfoRequest } from '@/api/user'
-import { removeToken, setToken } from '@/utils/cookies'
+import { removeAToken, setAToken, removeRToken, setRToken } from '@/utils/cookies'
 import { PermissionActionType } from '../permission/action-types'
 import router from '@/router'
 import { RouteRecordRaw } from 'vue-router'
@@ -45,6 +45,7 @@ export interface Actions {
 }
 
 export const actions: ActionTree<UserState, RootState> & Actions = {
+  // 登录
   async [UserActionTypes.ACTION_LOGIN](
     { commit }: AugmentedActionContext,
     userInfo: { username: string, password: string}
@@ -53,9 +54,11 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
     username = username.trim()
     await loginRequest({ username, password }).then(async(res: any) => {
       console.log(res)
-      if (res?.code === 0 && res.data.accessToken) {
-        setToken(res.data.accessToken)
-        commit(UserMutationTypes.SET_TOKEN, res.data.accessToken)
+      if (res?.code === 1000 && res.data.rToken && res.data.aToken) {
+        setAToken(res.data.aToken)
+        setRToken(res.data.rToken)
+        commit(UserMutationTypes.SET_ATOKEN, res.data.aToken)
+        commit(UserMutationTypes.SET_RTOKEN, res.data.rToken)
         // commit(UserMutationTypes.SET_ROLES, ['admin'])
       }
     }).catch((err: any) => {
@@ -65,20 +68,21 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
 
   [UserActionTypes.ACTION_RESET_TOKEN](
     { commit }: AugmentedActionContext) {
-    removeToken()
-    commit(UserMutationTypes.SET_TOKEN, '')
+    removeAToken()
+    removeRToken()
+    commit(UserMutationTypes.SET_ATOKEN, '')
     commit(UserMutationTypes.SET_ROLES, [])
   },
 
   async [UserActionTypes.ACTION_GET_USER_INFO](
     { commit }: AugmentedActionContext
   ) {
-    if (state.token === '') {
+    if (state.atoken === '') {
       throw Error('token is undefined!')
     }
     await userInfoRequest().then((res: any) => {
-      console.log(res)
-      if (res?.code === 0) {
+      console.log("asdasdasda........",res)
+      if (res?.code === 1000) {
         commit(UserMutationTypes.SET_ROLES, res.data.roles)
         commit(UserMutationTypes.SET_NAME, res.data.name)
         commit(UserMutationTypes.SET_AVATAR, res.data.avatar)
@@ -97,19 +101,24 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
   ) {
     const token = role + '-token'
     const store = useStore()
-    commit(UserMutationTypes.SET_TOKEN, token)
-    setToken(token)
-    await store.dispatch(UserActionTypes.ACTION_GET_USER_INFO, undefined)
+    commit(UserMutationTypes.SET_ATOKEN, token)
+    setAToken(token)
+    // await store.dispatch(UserActionTypes.ACTION_GET_USER_INFO, undefined)
     store.dispatch(PermissionActionType.ACTION_SET_ROUTES, state.roles)
     store.state.permission.dynamicRoutes.forEach((item: RouteRecordRaw) => {
       router.addRoute(item)
     })
   },
 
+  // 退出登录
   [UserActionTypes.ACTION_LOGIN_OUT](
     { commit }: AugmentedActionContext
   ) {
     console.log(commit)
+    removeAToken()
+    removeRToken()
+    commit(UserMutationTypes.SET_ATOKEN, '')
+    commit(UserMutationTypes.SET_RTOKEN, '')
   }
 
 }

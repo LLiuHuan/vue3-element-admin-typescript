@@ -2,7 +2,7 @@
  * @Description: 语言选择
  * @Author: LLiuHuan
  * @Date: 2021-02-17 20:51:49
- * @LastEditTime: 2021-02-18 17:00:18
+ * @LastEditTime: 2021-02-19 18:18:15
  * @LastEditors: LLiuHuan
 -->
 
@@ -48,7 +48,7 @@ export default defineComponent({
     const { locale } = useI18n()
 
     const state = reactive({
-      languages: [{ name: 'en', value: 'en' }, { name: '中文', value: 'zh-cn' }] as Array<Language>,
+      languages: [{ name: '中文', value: 'zh' }, { name: 'English', value: 'en' }, { name: 'Español', value: 'es' }, { name: '日本語', value: 'ja' }] as Array<Language>,
       handleSetLanguage: (lang: string) => {
         locale.value = lang
         store.dispatch(AppActionTypes.ACTION_SET_LANGUAGE, lang)

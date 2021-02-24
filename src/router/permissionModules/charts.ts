@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: LLiuHuan
  * @Date: 2021-02-18 17:05:32
- * @LastEditTime: 2021-02-19 13:44:04
+ * @LastEditTime: 2021-02-22 23:45:41
  * @LastEditors: LLiuHuan
  */
 
@@ -13,7 +13,7 @@ const chartsRouter: Array<RouteRecordRaw> = [
   {
     path: '/charts',
     component: Layout,
-    redirect: 'noredirect',
+    redirect: '404',
     name: 'Charts',
     meta: {
       title: 'charts',

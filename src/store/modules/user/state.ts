@@ -2,14 +2,15 @@
  * @Description: app state
  * @Author: LLiuHuan
  * @Date: 2021-02-17 21:00:55
- * @LastEditTime: 2021-02-18 13:30:48
+ * @LastEditTime: 2021-02-22 19:38:17
  * @LastEditors: LLiuHuan
  */
 
-import { getToken } from '@/utils/cookies'
+import { getAToken, getRToken } from '@/utils/cookies'
 
 export interface UserState{
-    token: string
+    atoken: string
+    rtoken: string
     name: string
     avatar: string
     introduction: string
@@ -18,7 +19,8 @@ export interface UserState{
 }
 
 export const state: UserState = {
-  token: getToken() || '',
+  atoken: getAToken() || '',
+  rtoken: getRToken() || '',
   name: '',
   avatar: '',
   introduction: '',
