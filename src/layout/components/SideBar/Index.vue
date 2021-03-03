@@ -8,7 +8,7 @@
 
 <template>
   <div :class="{'has-logo': showLogo}">
-    <SidebarLogo
+    <sidebar-logo
       v-if="showLogo"
       :collapse="isCollapse"
     />
@@ -23,7 +23,7 @@
         :router="true"
         mode="vertical"
       >
-        <SidebarItem
+        <sidebar-item
           v-for="route in routes"
           :key="route.path"
           :item="route"

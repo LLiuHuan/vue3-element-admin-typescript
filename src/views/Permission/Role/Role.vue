@@ -2,7 +2,7 @@
  * @Description: 角色切换和菜单配置（后端控制权限使用）
  * @Author: LLiuHuan
  * @Date: 2021-02-18 17:58:36
- * @LastEditTime: 2021-02-19 13:18:48
+ * @LastEditTime: 2021-03-01 22:30:01
  * @LastEditors: LLiuHuan
 -->
 
@@ -130,6 +130,7 @@ import { resolve } from 'path'
 import { useI18n } from 'vue-i18n'
 import editRole from './editRole'
 import { cloneDeep } from 'lodash'
+import { useStore } from 'vuex'
 
 interface Role {
   key: number
@@ -328,7 +329,7 @@ export default defineComponent({
     }
 
     const getServiceRoutes = () => {
-      getRoutes().then((res: any) => {
+      getRoutes(useStore().state.user.roles).then((res: any) => {
         state.serviceRoutes = res?.data.routes as any as RouteRecordRaw[]
         state.reshapedRoutes = getReshapeRoutes(res?.data.routes as any as RouteRecordRaw[])
       })

@@ -2,7 +2,7 @@
  * @Description: 用户相关接口
  * @Author: LLiuHuan
  * @Date: 2021-02-18 13:25:27
- * @LastEditTime: 2021-02-22 20:52:49
+ * @LastEditTime: 2021-03-01 14:24:54
  * @LastEditors: LLiuHuan
  */
 
@@ -17,5 +17,5 @@ export const loginRequest = (userInfo: RequestParams) => {
 }
 
 export const userInfoRequest = () => {
-  return https().request<RootObject<UserInfoModel>>('v1/userInfo', Method.GET, undefined, ContentType.form)
+  return https().request<RootObject<UserInfoModel>>('v1/user/userInfo', Method.GET, undefined, ContentType.form)
 }

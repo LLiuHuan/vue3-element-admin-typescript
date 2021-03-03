@@ -7,7 +7,7 @@
 -->
 
 <template>
-  <div
+  <el-container
     :class="classObj"
     class="app-wrapper"
   >
@@ -16,21 +16,24 @@
       class="drawer-bg"
       @click="handleClickOutside"
     />
-    <Sidebar class="sidebar-container" />
-    <div
+    <sidebar class="sidebar-container" />
+    <el-container
       :class="{hasTagsView: showTagsView}"
       class="main-container"
     >
-      <div :class="{'fixed-header': fixedHeader}">
-        <Navbar />
-        <TagsView v-if="showTagsView" />
-      </div>
-      <AppMain />
-      <RightPanel v-if="showSettings">
+      <el-aside :class="{'fixed-header': fixedHeader}">
+        <navbar />
+        <tags-view v-if="showTagsView" />
+      </el-aside>
+      <app-main />
+      <right-panel v-if="showSettings">
         <Settings />
-      </RightPanel>
-    </div>
-  </div>
+      </right-panel>
+      <el-footer>
+        底部栏
+      </el-footer>
+    </el-container>
+  </el-container>
 </template>
 
 <script lang="ts">
@@ -113,6 +116,7 @@ export default defineComponent({
   position: relative;
   height: 100%;
   width: 100%;
+  background-color: #E9EEF3 !important;
 }
 
 .drawer-bg {
@@ -150,7 +154,7 @@ export default defineComponent({
   top: 0;
   right: 0;
   z-index: 9;
-  width: calc(100% - #{$sideBarWidth});
+  width: calc(100% - #{$sideBarWidth})!important;
   transition: width 0.28s;
 }
 
@@ -164,7 +168,7 @@ export default defineComponent({
   }
 
   .fixed-header {
-    width: calc(100% - 60px)
+    width: calc(100% - 50px)!important
   }
 }
 
@@ -202,5 +206,15 @@ export default defineComponent({
   .sidebar-container {
     transition: none;
   }
+}
+</style>
+
+<style lang="scss">
+.el-aside {
+  width: calc(100% - #{$sideBarWidth})!important;
+  padding: 0;
+}
+.el-footer {
+  height: 20px!important;
 }
 </style>

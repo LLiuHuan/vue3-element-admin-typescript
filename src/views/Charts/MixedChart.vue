@@ -29,6 +29,6 @@ export default defineComponent({
 .chart-container {
   position: relative;
   width: 100%;
-  height: calc(100vh - 84px);
+  height: calc(100vh - 144px);
 }
 </style>

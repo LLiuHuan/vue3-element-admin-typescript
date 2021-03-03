@@ -25,3 +25,25 @@ export interface Route {
 export interface Routes {
   routes: Route[]
 }
+
+export interface RoutesJson {
+  id: string,
+  create_time: string,
+  update_time:string,
+  pid: string,
+  path: string,
+  component: any,
+  redirect: string,
+  name: string,
+  level: number,
+  sort: number,
+  title: string,
+  icon: string,
+  roles: string,
+  always_show: boolean,
+  affix: boolean,
+  hidden: boolean,
+  cache: boolean,
+  breadcrumb: boolean,
+  hasChildren: boolean
+}

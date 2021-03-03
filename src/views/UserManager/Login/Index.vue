@@ -2,7 +2,7 @@
  * @Description: 登录页面
  * @Author: LLiuHuan
  * @Date: 2021-02-18 14:01:23
- * @LastEditTime: 2021-02-22 20:13:35
+ * @LastEditTime: 2021-03-02 18:42:11
  * @LastEditors: LLiuHuan
 -->
 
@@ -15,7 +15,7 @@
       autoplay
       muted
     >
-      <source :src="require(`@/assets/images/login/night.mp4`)">
+      <!-- <source :src="require(`@/assets/images/login/night.mp4`)"> -->
     </video>
 
     <el-form
@@ -372,6 +372,11 @@ export default defineComponent({
     padding: 160px 35px 0;
     margin: 0 auto;
     overflow: hidden;
+    .el-input {
+      display: inline-block;
+      height: 47px;
+      width: 85%;
+    }
   }
 
   .tips {

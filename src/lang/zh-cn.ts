@@ -71,7 +71,9 @@ export default {
     clipboard: '粘贴板',
     i18n: '国际化',
     externalLink: '外链',
-    profile: '个人中心'
+    profile: '个人中心',
+    system: '系统',
+    menus: '菜单管理'
   },
   navbar: {
     logOut: '退出登录',

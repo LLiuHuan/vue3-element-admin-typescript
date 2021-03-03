@@ -37,13 +37,13 @@
         />
       </div>
 
-      <div class="drawer-item">
-        <span>{{ t('settings.fixedHeader') }}</span>
-        <el-switch
-          v-model="fixedHeader"
-          class="drawer-switch"
-        />
-      </div>
+<!--      <div class="drawer-item">-->
+<!--        <span>{{ t('settings.fixedHeader') }}</span>-->
+<!--        <el-switch-->
+<!--          v-model="fixedHeader"-->
+<!--          class="drawer-switch"-->
+<!--        />-->
+<!--      </div>-->
 
       <div class="drawer-item">
         <span>{{ t('settings.sidebarTextTheme') }}</span>

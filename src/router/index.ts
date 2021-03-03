@@ -2,11 +2,11 @@
  * @Description: 
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:13:28
- * @LastEditTime: 2021-02-19 22:33:21
+ * @LastEditTime: 2021-03-02 18:22:22
  * @LastEditors: LLiuHuan
  */
 
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/Index.vue'
 
 const constantFiles = require.context('./constantModules', true, /\.ts$/)
@@ -69,7 +69,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   ...permissionModules
 ]
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: constantRoutes
 })
 

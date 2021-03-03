@@ -7,7 +7,7 @@
 -->
 
 <template>
-  <div class="navbar">
+  <div class="navbar" style="height: 50px">
     <Hamburger
       id="hamburger-container"
       :is-active="sidebar.opened"

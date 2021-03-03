@@ -2,7 +2,7 @@
  * @Description: app actions
  * @Author: LLiuHuan
  * @Date: 2021-02-17 20:59:16
- * @LastEditTime: 2021-02-22 21:13:25
+ * @LastEditTime: 2021-03-01 20:35:51
  * @LastEditors: LLiuHuan
  */
 
@@ -54,7 +54,7 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
     username = username.trim()
     await loginRequest({ username, password }).then(async(res: any) => {
       console.log(res)
-      if (res?.code === 1000 && res.data.rToken && res.data.aToken) {
+      if (res?.code === 0 && res.data.rToken && res.data.aToken) {
         setAToken(res.data.aToken)
         setRToken(res.data.rToken)
         commit(UserMutationTypes.SET_ATOKEN, res.data.aToken)
@@ -71,7 +71,7 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
     removeAToken()
     removeRToken()
     commit(UserMutationTypes.SET_ATOKEN, '')
-    commit(UserMutationTypes.SET_ROLES, [])
+    commit(UserMutationTypes.SET_ROLES, '')
   },
 
   async [UserActionTypes.ACTION_GET_USER_INFO](
@@ -80,9 +80,10 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
     if (state.atoken === '') {
       throw Error('token is undefined!')
     }
+    console.log("1234")
     await userInfoRequest().then((res: any) => {
       console.log("asdasdasda........",res)
-      if (res?.code === 1000) {
+      if (res?.code === 0) {
         commit(UserMutationTypes.SET_ROLES, res.data.roles)
         commit(UserMutationTypes.SET_NAME, res.data.name)
         commit(UserMutationTypes.SET_AVATAR, res.data.avatar)

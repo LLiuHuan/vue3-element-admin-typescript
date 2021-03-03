@@ -54,12 +54,12 @@ export default defineComponent({
 .handle-button {
   width: 48px;
   height: 48px;
+  z-index: 999;
   position: absolute;
   right: 0px;
   text-align: center;
   font-size: 24px;
   border-radius: 6px 0 0 6px !important;
-  z-index: 0;
   cursor: pointer;
   pointer-events: auto;
   color: #fff;

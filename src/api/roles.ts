@@ -2,18 +2,22 @@
  * @Description: 
  * @Author: LLiuHuan
  * @Date: 2021-02-18 17:54:47
- * @LastEditTime: 2021-02-18 21:49:59
+ * @LastEditTime: 2021-03-01 20:42:37
  * @LastEditors: LLiuHuan
  */
 
-import { RolesModels } from '@/model/getRolesModel'
-import { RootObject } from '@/model/rootObject'
+import {RolesModels} from '@/model/getRolesModel'
+import {RootObject} from '@/model/rootObject'
 import { Routes } from '@/model/routesModel'
 import https from '@/utils/https'
-import { RequestParams, ContentType, Method } from 'axios-mapper'
+import {ContentType, Method, RequestParams} from 'axios-mapper'
 
-export const getRoutes = () => {
-  return https().request<RootObject<Routes>>('roles/getRoutes', Method.GET, undefined, ContentType.form)
+export const getRoutes = (roleName: string) => {
+  return https(true).request<RootObject<Routes>>('v1/menu/getMenu', Method.GET, { roleName }, ContentType.json)
+}
+
+export const getMenuByPId = (pid: string) => {
+  return https(true).request<RootObject<Routes>>('v1/menu/getMenuByPId', Method.GET, { pid }, ContentType.json)
 }
 
 export const getRoles = () => {

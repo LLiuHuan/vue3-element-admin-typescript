@@ -2,7 +2,7 @@
  * @Description: app state
  * @Author: LLiuHuan
  * @Date: 2021-02-17 21:00:55
- * @LastEditTime: 2021-02-22 19:38:17
+ * @LastEditTime: 2021-03-01 18:23:55
  * @LastEditors: LLiuHuan
  */
 
@@ -14,7 +14,7 @@ export interface UserState{
     name: string
     avatar: string
     introduction: string
-    roles: string[]
+    roles: string
     email: string
 }
 
@@ -24,6 +24,6 @@ export const state: UserState = {
   name: '',
   avatar: '',
   introduction: '',
-  roles: [],
+  roles: '',
   email: ''
 }

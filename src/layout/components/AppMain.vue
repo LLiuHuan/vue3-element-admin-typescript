@@ -7,16 +7,18 @@
 -->
 
 <template>
-  <section class="app-main">
-    <transition
-      name="fade-transform"
-      mode="out-in"
-    >
-      <keep-alive :include="cachedViews">
-        <router-view :key="key" />
-      </keep-alive>
-    </transition>
-  </section>
+  <el-main class="app-main">
+    <div class="main-content">
+      <transition
+          name="fade-transform"
+          mode="out-in"
+      >
+        <keep-alive :include="cachedViews">
+          <router-view :key="key" />
+        </keep-alive>
+      </transition>
+    </div>
+  </el-main>
 </template>
 
 <script lang="ts">
@@ -45,10 +47,14 @@ export default defineComponent({
 <style lang="scss" scoped>
 .app-main {
   /* 50= navbar  50  */
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 90px);
   width: 100%;
   position: relative;
   overflow: hidden;
+  .main-content {
+    min-height: calc(100vh - 144px);
+    background-color: #ffffff;
+  }
 }
 
 .fixed-header+.app-main {
@@ -60,11 +66,11 @@ export default defineComponent({
 .hasTagsView {
   .app-main {
     /* 84 = navbar + tags-view = 50 + 34 */
-    min-height: calc(100vh - 84px);
+    min-height: calc(100vh - 124px);
   }
 
   .fixed-header+.app-main {
-    padding-top: 84px;
+    padding-top: 104px;
   }
 }
 </style>

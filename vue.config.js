@@ -2,7 +2,7 @@
  * @Description: 配置文件
  * @Author: LLiuHuan
  * @Date: 2021-02-17 19:14:33
- * @LastEditTime: 2021-02-22 19:29:18
+ * @LastEditTime: 2021-03-01 12:52:44
  * @LastEditors: LLiuHuan
  */
 
@@ -40,7 +40,7 @@ module.exports = {
     },
     proxy: {
       '/v1': {
-        target: 'http://localhost:8081',
+        target: 'http://localhost:8081/v1',
         changeOrigin: true,
         pathRewrite: {'^/v1': ''}
       }
